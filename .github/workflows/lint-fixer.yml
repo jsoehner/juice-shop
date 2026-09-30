@@ -2,6 +2,9 @@ name: "Let me lint:fix that for you"
 
 on: [push]
 
+permissions:
+  contents: write
+
 jobs:
   LMLFTFY:
     runs-on: ubuntu-latest

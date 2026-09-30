@@ -8,6 +8,9 @@ on:
       - 'data/static/codefixes/*.info.yml'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   UpdateChallengesOnWebsite:
     if: github.repository == 'juice-shop/juice-shop'

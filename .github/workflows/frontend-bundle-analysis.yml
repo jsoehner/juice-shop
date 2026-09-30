@@ -5,6 +5,9 @@ on:
       - v*
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 env:
   NODE_DEFAULT_VERSION: 24
   NODE_OPTIONS: "--max_old_space_size=4096"

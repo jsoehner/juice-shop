@@ -3,12 +3,18 @@ on:
   push:
     tags:
       - v*
+
+permissions:
+  contents: read
+
 env:
   CYCLONEDX_NPM_VERSION: '^2.0.0||^3.0.0||^4.0.0'   # keep in sync with package.json
   TYPESCRIPT_VERSION: '^6.0.3'                      # keep in sync with package.json
 jobs:
   create-release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: "Check out Git repository"
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1
@@ -21,6 +27,8 @@ jobs:
   package:
     needs: create-release
     runs-on: ${{ matrix.os.runner }}
+    permissions:
+      contents: write
     strategy:
       matrix:
         os:

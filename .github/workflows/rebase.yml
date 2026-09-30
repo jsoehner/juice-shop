@@ -4,9 +4,15 @@ on:
   issue_comment:
     types: [created]
 
+permissions:
+  contents: read
+
 jobs:
   rebase:
     name: Rebase
+    permissions:
+      contents: write
+      pull-requests: write
     if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '/rebase')
     runs-on: ubuntu-latest
     steps:
@@ -20,6 +26,7 @@ jobs:
   # https://github.community/t5/GitHub-Actions/Workflow-is-failing-if-no-job-can-be-ran-due-to-condition/m-p/38186#M3250
   always_job:
     name: Always run job
+    permissions: {}
     runs-on: ubuntu-latest
     steps:
       - name: Always run
